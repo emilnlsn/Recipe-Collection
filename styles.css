@@ -3,10 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     font-size: x-large;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
  
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
     line-height: 1.5;
     min-height: 100vh;
     display: flex;
@@ -37,12 +37,14 @@ main {
 }
 
 .recipes {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
-.vert-stack {
+.horizontal-stack {
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -72,7 +74,7 @@ main {
 
 .item {
     margin: 0.2rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     border-radius: 20px;
@@ -86,8 +88,8 @@ main {
     background-color: #3f2844;
 }
 
-.item span {
-    flex: 0 0 300px;
+.item p {
+    width: 15rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
