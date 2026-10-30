@@ -9,13 +9,5 @@
                 <li>Water</li>
             </ul>
         </div>
-        <div class="surf-container">
-            <h2>Steps:</h2>
-            <ol class="ingredients">
-                <li>do</li>
-                <li>this</li>
-                <li>finish</li>
-            </ul>
-        </div>
     </div>
 </x-layout>
