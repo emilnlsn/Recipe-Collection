@@ -62,6 +62,7 @@ class RecipeController extends Controller
     public function destroy(Recipe $recipe): RedirectResponse
     {
         $recipe->delete();
+
         return redirect()->route('recipes.index');
     }
 }
