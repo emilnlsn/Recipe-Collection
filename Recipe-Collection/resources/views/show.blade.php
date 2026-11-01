@@ -1,13 +1,9 @@
 <x-layout>
-    <h1 class="centered">Some Recipe <a href="edit.html"><button>✏️</button></a></h1>
+    <h1 class="centered">{{$recipe->name}} <a href="{{route('recipes.edit', $recipe)}}"><button>✏️</button></a></h1>
     <div class="horizontal-stack">
         <div class="surf-container">
             <h2>Ingredients:</h2>
-            <ul class="ingredients">
-                <li>Butter</li>
-                <li>Milk</li>
-                <li>Water</li>
-            </ul>
+            <p>{{$recipe->ingredients}}</p>
         </div>
     </div>
 </x-layout>

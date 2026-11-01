@@ -5,9 +5,13 @@
             @foreach($recipes as $recipe)
                 <li class="item">
                     <p>{{ $recipe->name }}</p>
-                    <a href="pages/show.html"><button>👁️</button></a>
-                    <a href="pages/edit.html"><button>✏️</button></a>
-                    <button class="delete">🗑️</button>
+                    <a href="{{route('recipes.show', $recipe)}}"><button>👁️</button></a>
+                    <a href="{{route('recipes.edit', $recipe)}}"><button>✏️</button></a>
+                    <form method="POST" action="{{ route('recipes.destroy', $recipe) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" >🗑️</button>
+                    </form>
                 </li>
             @endforeach
         </ul>
