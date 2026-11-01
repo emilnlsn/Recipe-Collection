@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class RecipeController extends Controller
@@ -25,6 +26,7 @@ class RecipeController extends Controller
     {
         return view('show', [
             'recipe' => $recipe,
+            'imageUrl' => $recipe->image_path ? Storage::disk('public')->url($recipe->image_path) : null,
         ]);
     }
 
@@ -52,15 +54,28 @@ class RecipeController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'ingredients' => ['required', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:2048'],
         ]);
 
-        $recipe = Recipe::create($validated);
+        if ($request->hasFile('image')) {
+            $validated['image_path'] = $request->file('image')->store('recipes', 'public');
+        }
+
+        $recipe = Recipe::create([
+            'name' => $validated['name'],
+            'ingredients' => $validated['ingredients'],
+            'image_path' => $validated['image_path'] ?? null,
+        ]);
 
         return redirect()->route('recipes.show', $recipe);
     }
 
     public function destroy(Recipe $recipe): RedirectResponse
     {
+        if ($recipe->image_path) {
+            Storage::disk('public')->delete($recipe->image_path);
+        }
+
         $recipe->delete();
 
         return redirect()->route('recipes.index');

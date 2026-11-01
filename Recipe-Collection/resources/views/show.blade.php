@@ -5,5 +5,10 @@
             <h2>Ingredients:</h2>
             <p>{{$recipe->ingredients}}</p>
         </div>
+        @if($imageUrl)
+            <div class="surf-container">
+                <img width="500" height="500" src="{{ $imageUrl }}" alt="{{ $recipe->name }}">
+            </div>
+        @endif
     </div>
 </x-layout>
