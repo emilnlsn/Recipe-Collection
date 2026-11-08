@@ -9,15 +9,15 @@ function ValidateRecipeForm(){
 }
 
 function ValidateUser(){
-    let usernameEmpty = document.getElementById('Username').value.trim() === '';
-    let password = document.getElementById('Password');
+    let usernameEmpty = document.getElementById('name').value.trim() === '';
+    let emailEmpty = document.getElementById('email').value.trim() === '';
+    let password = document.getElementById('password');
     let passwordToSmall = password.value.length <= 8;
     let passwordEmpty = password.value.trim() === '';
-    let emailEmpty = document.getElementById('Email').value.trim() === '';
 
     document.getElementById('noUsernameAlert').textContent = usernameEmpty ? "Please enter a name" : '';
     document.getElementById('noPasswordAlert').textContent = (passwordEmpty || passwordToSmall) ? "Please enter a password longer than 8 characters" : '';
-    document.getElementById('noEmailAlert').textContent = usernameEmpty ? "Please enter a email" : '';
+    document.getElementById('noEmailAlert').textContent = emailEmpty ? "Please enter a email" : '';
 
     return !(usernameEmpty || emailEmpty || passwordEmpty || passwordToSmall);
 }

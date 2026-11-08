@@ -3,24 +3,27 @@
     <head>
         <title>Recipe Collection 👨‍🍳</title>
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+        <script defer src="{{asset('js/validations.js')}}"></script>
     </head>
     <body>
         <header>
             <h1>Recipe Collection 👨‍🍳</h1>
+            <a href="{{route('login.index')}}"><button>Login</button></a>
         </header>
 
         <main>
             <div class="surf-container">
                 <h1>Create Account</h1>
-                <form onsubmit="return ValidateUser()">
-                    <label for="Username">Username:</label><br>
-                    <input type="text" id="Username" name="Username"><br>
+                <form method="POST" action="{{ route('register.store') }}" onsubmit="return ValidateUser()">
+                    @csrf
+                    <label for="name">Username:</label><br>
+                    <input type="text" id="name" name="name"><br>
                     <p class="alert" id="noUsernameAlert"></p>
-                    <label for="Email">Email:</label><br>
-                    <input type="text" id="Email" name="Email"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email"><br>
                     <p class="alert" id="noEmailAlert"></p>
-                    <label for="Password">Password:</label><br>
-                    <input type="password" id="Password" name="Password"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br>
                     <p class="alert" id="noPasswordAlert"></p>
                     <input type="submit" value="Submit">
                 </form>
