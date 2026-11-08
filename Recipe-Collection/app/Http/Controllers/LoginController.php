@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+
 class LoginController extends Controller
 {
     public function index()
@@ -15,8 +17,18 @@ class LoginController extends Controller
 
         if ($loggedIn) {
             return redirect()->route('recipes.index');
-        } else{
-            return redirect()->route('login.index');
+        } else {
+            return redirect()->route('login');
         }
+    }
+
+    public function destroy(): RedirectResponse
+    {
+        auth()->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

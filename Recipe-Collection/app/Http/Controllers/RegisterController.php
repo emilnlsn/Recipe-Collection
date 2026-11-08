@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
-use App\Http\Controllers\LoginController;
 
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -15,6 +14,7 @@ class RegisterController extends Controller
     public function store()
     {
         User::create(request(['name', 'email', 'password']));
+
         return redirect()->route('login.index');
     }
 }

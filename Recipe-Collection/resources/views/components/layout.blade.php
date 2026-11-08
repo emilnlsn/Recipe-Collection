@@ -9,6 +9,10 @@
         <header>
             <a href="{{route('recipes.index')}}"><h1>Recipe Collection 👨‍🍳</h1></a>
             <a href="{{route('recipes.create')}}"><button>Create</button></a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">Log Out</button>
+            </form>
         </header>
 
         <main> {{$slot}}</main>
