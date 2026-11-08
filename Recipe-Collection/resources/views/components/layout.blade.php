@@ -3,7 +3,7 @@
     <head>
         <title>Recipe Collection 👨‍🍳</title>
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-        <script src="{{ asset('js/create.js') }}" defer></script>
+        <script src="{{ asset('js/validations.js') }}" defer></script>
     </head>
     <body>
         <header>
