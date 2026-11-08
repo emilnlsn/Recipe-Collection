@@ -8,7 +8,7 @@
     <body>
         <header>
             <h1>Recipe Collection 👨‍🍳</h1>
-            <a href="{{route('login.index')}}"><button>Login</button></a>
+            <a href="{{route('login')}}"><button>Login</button></a>
         </header>
 
         <main>

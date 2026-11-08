@@ -15,6 +15,6 @@ class RegisterController extends Controller
     {
         User::create(request(['name', 'email', 'password']));
 
-        return redirect()->route('login.index');
+        return redirect()->route('login');
     }
 }
