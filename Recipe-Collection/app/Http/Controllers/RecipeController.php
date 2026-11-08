@@ -14,6 +14,7 @@ class RecipeController extends Controller
     {
         return view('index', [
             'recipes' => Recipe::query()->orderBy('name')->get(),
+            'wishlistIds' => auth()->user()->wishlist()->pluck('recipes.id')->all(),
         ]);
     }
 
